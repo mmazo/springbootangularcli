@@ -1,0 +1,1 @@
+This is a project with only aim to learn spring boot and angular cli.
