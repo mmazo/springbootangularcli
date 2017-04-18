@@ -25,10 +25,10 @@ public class Backend {
     @Bean
     public CommandLineRunner demo(UserRepository repository) {
         return (args) -> {
-            repository.save(new User("Mustermann",
+            /*repository.save(new User("Mustermann",
                     "Max","mustermax","Mustermax123!"));
             repository.save(new User("Musterfrau",
-                    "Maxi","mustermaxi","Mustermaxi123!"));
+                    "Maxi","mustermaxi","Mustermaxi123!"));*/
 
             // fetch all users
             log.info("Users found with findAll():");
