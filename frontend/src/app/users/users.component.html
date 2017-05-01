@@ -7,22 +7,22 @@
         <th>Surname</th>
         <th>Username</th>
         <th class="text-right">
-          <button class="btn btn-sm">
+          <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#user-details" (click)="addNewUser()">
             <i class="fa fa-plus"></i>
           </button>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr *ngFor="let user of users" (click)="select(user)">
         <td>{{user.name}}</td>
         <td>{{user.surname}}</td>
         <td>{{user.username}}</td>
         <td class="text-right">
-          <button class="btn btn-sm">
+          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#user-details">
             <i class="fa fa-pencil"></i>
           </button>
-          <button class="btn btn-sm">
+          <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#user-delete">
             <i class="fa fa-trash"></i>
           </button>
         </td>
@@ -31,3 +31,60 @@
   </table>
   <div class="panel-footer"></div>
 </div>
+
+<!-- user details modal -->
+<div class="modal fade" id="user-details" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">User</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input id="name" name="name" class="form-control" [(ngModel)]="selectedUser.name">
+          </div>
+          <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input id="surname" name="surname" class="form-control" [(ngModel)]="selectedUser.surname">
+          </div>
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input id="username" name="username" class="form-control" [(ngModel)]="selectedUser.username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input id="password" name="password" class="form-control" [(ngModel)]="selectedUser.password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="saveUser()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- user details modal -->
+
+<!-- user delete modal -->
+<div class="modal fade" id="user-delete" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">User</h4>
+      </div>
+      <div class="modal-body">
+        Sure delete <strong>{{selectedUser.username}}</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary btn-danger" (click)="deleteUser()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- user delete modal -->
