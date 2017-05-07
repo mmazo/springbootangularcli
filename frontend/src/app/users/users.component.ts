@@ -58,7 +58,8 @@ export class UsersComponent implements OnInit {
 
   public deleteUser() {
     this.usersService.deleteOne(this.selectedUser.id).subscribe(
-      (user: User) => {
+      (resp: any) => {
+        console.log('delete callback');
         this.getAllUsers();
       }, (error: any) => {
         console.log(error);

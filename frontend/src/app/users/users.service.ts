@@ -31,7 +31,7 @@ export class UsersService {
   }
 
   public updateOne(user: User): Observable<User> {
-    return this.http.put(this.serviceUrl,user)
+    return this.http.put(this.serviceUrl + '/' + user.id, user)
       .map(this.extractData)
       .catch(this.extractError);
   }
@@ -43,7 +43,17 @@ export class UsersService {
   }
 
   private extractData(res: Response) {
-    return res.json() || {};
+    let resp: any;
+    if (res.text() === '') {
+      resp = '';
+    } else {
+      try {
+        resp = res.json();
+      } catch (error) {
+        resp = '';
+      }
+    }
+    return resp;
   }
 
   private extractError(error: Response) {
