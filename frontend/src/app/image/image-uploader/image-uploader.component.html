@@ -1,0 +1,18 @@
+<div>
+  <div ng2FileDrop
+       [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+       (fileOver)="fileOverBase($event)"
+       [uploader]="uploader"
+       class="well my-drop-zone">
+    Drop image here
+  </div>
+  <p>or</p>
+  <p><input type="file" ng2FileSelect [uploader]="uploader" /></p>
+  <div class="progress" style="">
+    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+  </div>
+  <button type="button" class="btn btn-success btn-s"
+          (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+    <span class="glyphicon glyphicon-upload"></span> Upload Image
+  </button>
+</div>

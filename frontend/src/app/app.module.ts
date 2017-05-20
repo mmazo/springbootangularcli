@@ -10,6 +10,7 @@ import { UsersComponent } from './users/users.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UsersService } from "./users/users.service";
+import { ImageModule } from "./image/image.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UsersService } from "./users/users.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ImageModule
   ],
   providers: [
     UsersService

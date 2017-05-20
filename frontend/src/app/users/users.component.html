@@ -43,6 +43,10 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
+            <label for="name">Image:</label>
+            <app-image-uploader></app-image-uploader>
+          </div>
+          <div class="form-group">
             <label for="name">Name:</label>
             <input id="name" name="name" class="form-control" [(ngModel)]="selectedUser.name">
           </div>
