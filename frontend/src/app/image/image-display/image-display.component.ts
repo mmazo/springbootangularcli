@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-image-display',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageDisplayComponent implements OnInit {
 
+  @Input()
+  public id: number;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public imageUrl(): string {
+    return '/api/v1/image/' + this.id;
   }
 
 }
