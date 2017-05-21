@@ -3,6 +3,7 @@
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
+        <th>Avatar</th>
         <th>Name</th>
         <th>Surname</th>
         <th>Username</th>
@@ -15,6 +16,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of users" (click)="select(user)">
+        <td><app-image-display [id]="user.imageId"></app-image-display></td>
         <td>{{user.name}}</td>
         <td>{{user.surname}}</td>
         <td>{{user.username}}</td>
@@ -44,8 +46,8 @@
         <form>
           <div class="form-group">
             <label for="name">Image:</label>
-            <app-image-uploader></app-image-uploader>
-            <app-image-display [id]="3"></app-image-display>
+            <app-image-uploader (uploadedImageId)="setUserAvatar($event)"></app-image-uploader>
+            <app-image-display [id]="selectedUser.imageId"></app-image-display>
           </div>
           <div class="form-group">
             <label for="name">Name:</label>

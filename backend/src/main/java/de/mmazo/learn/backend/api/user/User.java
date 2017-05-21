@@ -20,6 +20,7 @@ public class User {
     private String surname;
     private String username;
     private String password;
+    private long imageId;
 
     protected User() {}
 
@@ -68,6 +69,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(long imageId) {
+        this.imageId = imageId;
     }
 
     @Override

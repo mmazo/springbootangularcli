@@ -66,4 +66,9 @@ export class UsersComponent implements OnInit {
       });
   }
 
+  public setUserAvatar(imageId: number) {
+    console.log('set avatar ' + imageId + ' for user ' + this.selectedUser.name);
+    this.selectedUser.imageId = imageId;
+  }
+
 }
