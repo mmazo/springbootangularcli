@@ -8,6 +8,9 @@ import {Component, OnInit, Input} from '@angular/core';
 export class ImageDisplayComponent implements OnInit {
 
   @Input()
+  public displayType: string = 'list-item';
+
+  @Input()
   public id: number;
 
   constructor() { }

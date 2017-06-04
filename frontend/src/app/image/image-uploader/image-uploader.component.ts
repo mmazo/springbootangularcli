@@ -18,6 +18,8 @@ export class ImageUploaderComponent implements OnInit {
   public hasBaseDropZoneOver:boolean = false;
   public hasAnotherDropZoneOver:boolean = false;
 
+  private prevUploadedImageId: number = null;
+
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
   }
@@ -31,6 +33,7 @@ export class ImageUploaderComponent implements OnInit {
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
       let resp: Image = JSON.parse(response) as Image;
       this.returnUploadedImageId(resp.id);
+      this.deleteOldImage(resp.id);
     };
   }
 
@@ -41,5 +44,15 @@ export class ImageUploaderComponent implements OnInit {
   public returnUploadedImageId(id: number) {
     this.uploadedImageId.emit(id);
   }
+
+  private deleteOldImage(newImageId: number) {
+    if (this.prevUploadedImageId !== null) {
+      this.imageService.deleteOne(this.prevUploadedImageId).subscribe(() => {
+        this.prevUploadedImageId = newImageId;
+      }, () => {
+      });
+    }
+  }
+
 
 }
